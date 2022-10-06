@@ -1,0 +1,45 @@
+<p-dialog header="Title" [(visible)]="display" [style]="{width: '50vw'}">
+    <h1>dio</h1>Content
+</p-dialog>
+
+<p-toolbar styleClass="p-mb-4">
+    <div class="p-toolbar-group-left">
+        <p-button label="New" icon="pi pi-plus" (click)="showDialog()"></p-button>
+        </div>
+</p-toolbar>
+
+<p-table [value]="matches" dataKey="id" [rows]="10"[showCurrentPageReport]="true" [paginator]="true" [rowsPerPageOptions]="[10,25,50]"
+currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [(selection)]="selectedRows" [rowHover]="true">
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width: 3rem">
+                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+            <th>id</th>
+            <th>matchTeams</th>
+            <th>time</th>
+            <th>date</th>
+            <th>result</th>
+            <th>Action</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-Match>
+        <tr>
+            <td>
+                <p-tableCheckbox [value]="Match"></p-tableCheckbox>
+            </td>
+            <td>{{Match.id}}</td>
+            <td>{{Match.matchTeams.home._id}}</td>
+            <td>{{Match.time}}</td>
+            <td>{{Match.date}}</td>
+            <td>{{Match.result.home}}</td>
+            <td><button pButton type="button" label="Delete" (click)="delete(Match.id)"></button></td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+        <div class="p-d-flex p-ai-center p-jc-between">
+            In total there are {{matches ? matches.length : 0 }} matches.
+        </div>
+    </ng-template>
+</p-table>
+

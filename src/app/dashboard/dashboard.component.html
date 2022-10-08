@@ -1,26 +1,42 @@
-<p-dialog header="Title" [(visible)]="display" [style]="{width: '50vw'}">
-    <h1>dio</h1>Content
+<p-dialog header="Add new Match" [(visible)]="display" [style]="{width: '50vw'}">
+    <div class="grid">
+        <div class="col-12">
+    <span class="p-float-label">
+        <p-inputNumber class="input" [(ngModel)]="newMatch.id"></p-inputNumber>
+        <label for="float-input">ID</label>
+    </span>
+    <div class="title-match-teams col-12">
+        <h1>Match Teams</h1>
+    </div>
+    <div class="col-12">
+        <p-button label="Add" icon="pi pi-plus" (click)="addNewMatch()"></p-button>
+        </div>
+</div>
+    </div>
 </p-dialog>
-
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+<div class="col-12" style="padding: 2.5em;">
 <p-toolbar styleClass="p-mb-4">
-    <div class="p-toolbar-group-left">
+    <div class="col-12">
         <p-button label="New" icon="pi pi-plus" (click)="showDialog()"></p-button>
+        <button pButton type="button" label="Delete all Matches selected" (click)="deleteAll()"></button>
         </div>
 </p-toolbar>
-
-<p-table [value]="matches" dataKey="id" [rows]="10"[showCurrentPageReport]="true" [paginator]="true" [rowsPerPageOptions]="[10,25,50]"
-currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [(selection)]="selectedRows" [rowHover]="true">
+</div>
+<div class="col-12" style="padding: 2.5em;">
+<p-table [value]="matches" dataKey="id" [paginator]="true" [rows]="10" [totalRecords]="totalMatches" [(selection)]="selectedRows" [rowHover]="true"
+selectionMode="multiple" [(selection)]="selectedRows" dataKey="id" [scrollable]="true" styleClass="mt-3">
     <ng-template pTemplate="header">
         <tr>
-            <th style="width: 3rem">
+            <th>
                 <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
             </th>
             <th>id</th>
-            <th>matchTeams</th>
-            <th>time</th>
-            <th>date</th>
-            <th>result</th>
-            <th>Action</th>
+            <th><span i18n style="width: 50em;">matchTeams</span></th>
+            <th i18n>time</th>
+            <th i18n>date</th>
+            <th i18n>result</th>
+            <th i18n>Action</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-Match>
@@ -29,11 +45,48 @@ currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
                 <p-tableCheckbox [value]="Match"></p-tableCheckbox>
             </td>
             <td>{{Match.id}}</td>
-            <td>{{Match.matchTeams.home._id}}</td>
+            <td>
+                <div class="col-12 grid" style="border: 2px solid grey; width: 50em;">
+                    <div class="title-match-home-away col-6"><h5 i18n>Home</h5></div>
+                    <div class="title-match-home-away col-6"><h5 i18n>Away</h5></div>
+                    <div class="col-3" style="padding-top: 1em;">ID: </div>
+                    <div class="col-3" style="padding-top: 1em;">{{Match.matchTeams.home._id}}</div>
+                    <div class="col-3" style="padding-top: 1em;">ID: </div>
+                    <div class="col-3" style="padding-top: 1em;">{{Match.matchTeams.away._id}}</div>
+                    <div class="col-3">DOC: </div><div class="col-3">{{Match.matchTeams.home.doc}}</div>
+                    <div class="col-3">DOC: </div><div class="col-3">{{Match.matchTeams.away.doc}}</div>
+                    <div class="col-3">SID: </div><div class="col-3">{{Match.matchTeams.home.sid}}</div>
+                    <div class="col-3">SID: </div><div class="col-3">{{Match.matchTeams.away.sid}}</div>
+                    <div class="col-3">UID: </div><div class="col-3">{{Match.matchTeams.home.uid}}</div>
+                    <div class="col-3">UID: </div><div class="col-3">{{Match.matchTeams.away.uid}}</div>
+                    <div class="col-3">VIRTUAL: </div><div class="col-3">{{Match.matchTeams.home.virtual}}</div>
+                    <div class="col-3">VIRTUAL: </div><div class="col-3">{{Match.matchTeams.away.virtual}}</div>
+                    <div class="col-3">NAME: </div><div class="col-3">{{Match.matchTeams.home.name}}</div>
+                    <div class="col-3">NAME: </div><div class="col-3">{{Match.matchTeams.away.name}}</div>
+                    <div class="col-3">MEDIUMNAME: </div><div class="col-3">{{Match.matchTeams.home.mediumname}}</div>
+                    <div class="col-3">MEDIUMNAME: </div><div class="col-3">{{Match.matchTeams.away.mediumname}}</div>
+                    <div class="col-3">ABBR: </div><div class="col-3">{{Match.matchTeams.home.abbr}}</div>
+                    <div class="col-3">ABBR: </div><div class="col-3">{{Match.matchTeams.away.abbr}}</div>
+                    <div class="col-3">NICKNAME: </div><div class="col-3">{{Match.matchTeams.home.nickname}}</div>
+                    <div class="col-3">NICKNAME: </div><div class="col-3">{{Match.matchTeams.away.nickname}}</div>
+                    <div class="col-3">ISCOUNTRY: </div><div class="col-3">{{Match.matchTeams.home.isCountry}}</div>
+                    <div class="col-3">ISCOUNTRY: </div><div class="col-3">{{Match.matchTeams.away.isCountry}}</div>
+                    <div class="col-3">HASLOGO: </div><div class="col-3">{{Match.matchTeams.home.haslogo}}</div>
+                    <div class="col-3">HASLOGO: </div><div class="col-3">{{Match.matchTeams.away.haslogo}}</div>
+                </div>
+            </td>
             <td>{{Match.time}}</td>
             <td>{{Match.date}}</td>
-            <td>{{Match.result.home}}</td>
-            <td><button pButton type="button" label="Delete" (click)="delete(Match.id)"></button></td>
+            <td>
+                <div class="grid col-12" style="width: 20em;">
+                <div class="title-match-home-away col-12"><h5>Result</h5></div>
+                <div class="col-6">HOME: </div><div class="col-6">{{Match.result.home}}</div>
+                <div class="col-6">AWAY: </div><div class="col-6">{{Match.result.away}}</div>
+                <div class="col-6">PERIOD: </div><div class="col-6">{{Match.result.period}}</div>
+                <div class="col-6">WINNER: </div><div class="col-6">{{Match.result.winner}}</div>
+            </div>
+            </td>
+            <td><button pButton type="button" label="Delete" (click)="delete(Match)"></button></td>
         </tr>
     </ng-template>
     <ng-template pTemplate="summary">
@@ -42,4 +95,5 @@ currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
         </div>
     </ng-template>
 </p-table>
+</div>
 

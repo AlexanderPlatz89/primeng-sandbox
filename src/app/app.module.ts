@@ -12,6 +12,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {DialogModule} from 'primeng/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {InputTextModule} from 'primeng/inputtext';
+import {InputNumberModule} from 'primeng/inputnumber';
+import {PasswordModule} from 'primeng/password';
+import {ToastModule} from 'primeng/toast';
+import {MessageModule} from 'primeng/message';
+import {MessagesModule} from 'primeng/messages';
+import { ToastrModule } from 'ngx-toastr';
+import {MenubarModule} from 'primeng/menubar';
+import {NgToastModule} from 'ng-angular-popup';
 
 
 @NgModule({
@@ -30,7 +39,16 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     ConfirmDialogModule,
     DialogModule,
     BrowserAnimationsModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    InputTextModule,
+    InputNumberModule,
+    PasswordModule,
+    ToastModule,
+    MessageModule,
+    MessagesModule,
+    ToastrModule,
+    MenubarModule,
+    NgToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]

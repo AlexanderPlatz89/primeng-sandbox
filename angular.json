@@ -4,6 +4,10 @@
   "newProjectRoot": "projects",
   "projects": {
     "primeng-sandbox": {
+      "i18n":{
+        "sourceLocale":"en-US",
+        "locales": {"it-IT": "src/locale/messages.it.xlf"}
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,6 +21,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "localize":["it-IT"],
             "outputPath": "dist/primeng-sandbox",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -31,7 +36,9 @@
               "src/styles.scss",
               "node_modules/primeicons/primeicons.css",
               "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
-              "node_modules/primeng/resources/primeng.min.css"
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeflex/primeflex.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           },

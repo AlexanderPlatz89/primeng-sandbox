@@ -20,7 +20,7 @@ export interface MatchTeams {
 
 export interface Home {
   doc?: string,
-  id?: number,
+  _id?: number,
   sid?: number,
   uid?: number,
   virtual?: boolean,
@@ -34,7 +34,7 @@ export interface Home {
 
 export interface Away {
   doc?: string,
-  id?: number,
+  _id?: number,
   sid?: number,
   uid?: number,
   virtual?: boolean,

@@ -13,6 +13,7 @@ export class DashboardService {
 
   getMatches() {
     axios.get('https://www.dontouch.ch/json/cc.json').then(resp => {
+      console.log(resp)
       if(resp != null){
         let response = resp.data.doc[0].data.matches
         for (var key in response) {

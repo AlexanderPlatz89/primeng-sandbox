@@ -21,6 +21,7 @@ import {MessagesModule} from 'primeng/messages';
 import { ToastrModule } from 'ngx-toastr';
 import {MenubarModule} from 'primeng/menubar';
 import {NgToastModule} from 'ng-angular-popup';
+import {TabMenuModule} from 'primeng/tabmenu';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import {NgToastModule} from 'ng-angular-popup';
     MessagesModule,
     ToastrModule,
     MenubarModule,
-    NgToastModule
+    NgToastModule,
+    TabMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

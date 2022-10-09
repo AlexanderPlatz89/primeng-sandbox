@@ -24,8 +24,10 @@
 </p-toolbar>
 </div>
 <div class="col-12" style="padding: 2.5em;">
-<p-table [value]="matches" dataKey="id" [paginator]="true" [rows]="10" [totalRecords]="totalMatches" [(selection)]="selectedRows" [rowHover]="true"
-selectionMode="multiple" [(selection)]="selectedRows" dataKey="id" [scrollable]="true" styleClass="mt-3">
+<p-table [value]="matches" [(selection)]="selectedRows" dataKey="id"
+[rowHover]="true" [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]"
+[paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+selectionMode="multiple" dataKey="id" [scrollable]="true" styleClass="mt-3">
     <ng-template pTemplate="header">
         <tr>
             <th>

@@ -53,6 +53,10 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  public ShowMatchTeamsDetails(event: Match){
+    event.showMatchTeams = !event.showMatchTeams
+  }
+
   matches: Match[] = []
   totalMatches: number = 0
   selectedRows: Match[] = []

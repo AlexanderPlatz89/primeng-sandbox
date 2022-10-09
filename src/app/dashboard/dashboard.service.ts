@@ -22,7 +22,8 @@ export class DashboardService {
             matchTeams: response[key].teams,
             time: response[key].time.time,
             date: response[key].time.date,
-            result: response[key].result
+            result: response[key].result,
+            showMatchTeams: false
           })
         }
       }

@@ -1,101 +1,142 @@
-<p-dialog header="Add new Match" [(visible)]="display" [style]="{width: '50vw'}">
-    <div class="grid">
-        <div class="col-12">
-    <span class="p-float-label">
-        <p-inputNumber class="input" [(ngModel)]="newMatch.id"></p-inputNumber>
-        <label for="float-input">ID</label>
-    </span>
-    <div class="title-match-teams col-12">
-        <h1>Match Teams</h1>
-    </div>
-    <div class="col-12">
-        <p-button label="Add" icon="pi pi-plus" (click)="addNewMatch()"></p-button>
-        </div>
-</div>
-    </div>
-</p-dialog>
 <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
-<div class="col-12" style="padding: 2.5em;">
-<p-toolbar styleClass="p-mb-4">
-    <div class="col-12">
-        <p-button label="New" icon="pi pi-plus" (click)="showDialog()"></p-button>
-        <button pButton type="button" label="Delete all Matches selected" (click)="deleteAll()"></button>
+<div class="col-12" style="padding: 1em;">
+    <p-toolbar styleClass="p-mb-4">
+        <div class="col-12" style="text-align: right;">
+            <p-button label="New" style="margin-right: 1em;" icon="pi pi-plus" (click)="showDialog()"></p-button>
+            <button pButton type="button" label="Delete all Matches selected" (click)="deleteAll()"></button>
         </div>
-</p-toolbar>
+    </p-toolbar>
 </div>
-<div class="col-12" style="padding: 2.5em;">
-<p-table [value]="matches" [(selection)]="selectedRows" dataKey="id"
-[rowHover]="true" [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]"
-[paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-selectionMode="multiple" dataKey="id" [scrollable]="true" styleClass="mt-3">
-    <ng-template pTemplate="header">
-        <tr>
-            <th>
-                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-            </th>
-            <th>id</th>
-            <th><span i18n style="width: 50em;">matchTeams</span></th>
-            <th i18n>time</th>
-            <th i18n>date</th>
-            <th i18n>result</th>
-            <th i18n>Action</th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-Match>
-        <tr>
-            <td>
-                <p-tableCheckbox [value]="Match"></p-tableCheckbox>
-            </td>
-            <td>{{Match.id}}</td>
-            <td>
-                <div class="col-12 grid" style="border: 2px solid grey; width: 50em;">
-                    <div class="title-match-home-away col-6"><h5 i18n>Home</h5></div>
-                    <div class="title-match-home-away col-6"><h5 i18n>Away</h5></div>
-                    <div class="col-3" style="padding-top: 1em;">ID: </div>
-                    <div class="col-3" style="padding-top: 1em;">{{Match.matchTeams.home._id}}</div>
-                    <div class="col-3" style="padding-top: 1em;">ID: </div>
-                    <div class="col-3" style="padding-top: 1em;">{{Match.matchTeams.away._id}}</div>
-                    <div class="col-3">DOC: </div><div class="col-3">{{Match.matchTeams.home.doc}}</div>
-                    <div class="col-3">DOC: </div><div class="col-3">{{Match.matchTeams.away.doc}}</div>
-                    <div class="col-3">SID: </div><div class="col-3">{{Match.matchTeams.home.sid}}</div>
-                    <div class="col-3">SID: </div><div class="col-3">{{Match.matchTeams.away.sid}}</div>
-                    <div class="col-3">UID: </div><div class="col-3">{{Match.matchTeams.home.uid}}</div>
-                    <div class="col-3">UID: </div><div class="col-3">{{Match.matchTeams.away.uid}}</div>
-                    <div class="col-3">VIRTUAL: </div><div class="col-3">{{Match.matchTeams.home.virtual}}</div>
-                    <div class="col-3">VIRTUAL: </div><div class="col-3">{{Match.matchTeams.away.virtual}}</div>
-                    <div class="col-3">NAME: </div><div class="col-3">{{Match.matchTeams.home.name}}</div>
-                    <div class="col-3">NAME: </div><div class="col-3">{{Match.matchTeams.away.name}}</div>
-                    <div class="col-3">MEDIUMNAME: </div><div class="col-3">{{Match.matchTeams.home.mediumname}}</div>
-                    <div class="col-3">MEDIUMNAME: </div><div class="col-3">{{Match.matchTeams.away.mediumname}}</div>
-                    <div class="col-3">ABBR: </div><div class="col-3">{{Match.matchTeams.home.abbr}}</div>
-                    <div class="col-3">ABBR: </div><div class="col-3">{{Match.matchTeams.away.abbr}}</div>
-                    <div class="col-3">NICKNAME: </div><div class="col-3">{{Match.matchTeams.home.nickname}}</div>
-                    <div class="col-3">NICKNAME: </div><div class="col-3">{{Match.matchTeams.away.nickname}}</div>
-                    <div class="col-3">ISCOUNTRY: </div><div class="col-3">{{Match.matchTeams.home.isCountry}}</div>
-                    <div class="col-3">ISCOUNTRY: </div><div class="col-3">{{Match.matchTeams.away.isCountry}}</div>
-                    <div class="col-3">HASLOGO: </div><div class="col-3">{{Match.matchTeams.home.haslogo}}</div>
-                    <div class="col-3">HASLOGO: </div><div class="col-3">{{Match.matchTeams.away.haslogo}}</div>
-                </div>
-            </td>
-            <td>{{Match.time}}</td>
-            <td>{{Match.date}}</td>
-            <td>
-                <div class="grid col-12" style="width: 20em;">
-                <div class="title-match-home-away col-12"><h5>Result</h5></div>
-                <div class="col-6">HOME: </div><div class="col-6">{{Match.result.home}}</div>
-                <div class="col-6">AWAY: </div><div class="col-6">{{Match.result.away}}</div>
-                <div class="col-6">PERIOD: </div><div class="col-6">{{Match.result.period}}</div>
-                <div class="col-6">WINNER: </div><div class="col-6">{{Match.result.winner}}</div>
-            </div>
-            </td>
-            <td><button pButton type="button" label="Delete" (click)="delete(Match)"></button></td>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="summary">
-        <div class="p-d-flex p-ai-center p-jc-between">
-            In total there are {{matches ? matches.length : 0 }} matches.
-        </div>
-    </ng-template>
-</p-table>
+<div class="col-12">
+    <p-table [value]="matches" dataKey="id" [(selection)]="selectedRows">
+        <ng-template pTemplate="header" styleClass="p-datatable-sm">
+            <tr>
+                <th style="width: 3rem"></th>
+                <th pSortableColumn="id">ID <p-sortIcon field="id"></p-sortIcon>
+                </th>
+                <th pSortableColumn="Time">Time <p-sortIcon field="time"></p-sortIcon>
+                </th>
+                <th pSortableColumn="date">date <p-sortIcon field="date"></p-sortIcon>
+                </th>
+                <th pSortableColumn="Action">Action <p-sortIcon field="Action"></p-sortIcon>
+                </th>
+                <th>
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-match let-expanded="expanded">
+            <tr>
+                <td>
+                    <button type="button" pButton pRipple [pRowToggler]="match"
+                        class="p-button-text p-button-rounded p-button-plain"
+                        [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                </td>
+                <td>{{match.id}}</td>
+                <td>{{match.time}}</td>
+                <td>{{match.date}}</td>
+                <td>
+                    <button pButton pRipple type="button" label="Delete" class="p-button-raised p-button-danger"
+                        (click)="delete(match)" icon="pi pi-trash">
+                    </button>
+                </td>
+                <td>
+                    <p-tableCheckbox [value]="match"></p-tableCheckbox>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="rowexpansion" let-match>
+            <tr>
+                <td colspan="7">
+                    <div class="p-p-3">
+                        <div class="col-12 grid" style="background-color: #3B82F6;">
+                            <div class="col-4" style="text-align: center;">
+                                <b style="color: white;">MATCH TEAMS HOME</b>
+                            </div>
+                            <div class="col-4" style="text-align: center;">
+                                <b style="color: white;">MATCH TEAMS AWAY</b>
+                            </div>
+                            <div class="col-4" style="text-align: center;">
+                                <b style="color: white;">RESULT</b>
+                            </div>
+                        </div>
+                        <div class="col-12 grid">
+                            <div class="col-4 grid">
+                                <div class="col-6 line"><b style="color: #3B82F6;">ID: </b></div>
+                                <div class="col-6 line">{{match.matchTeams.home._id}}</div>
+                                <div class="col-6 line"><b style="color: #3B82F6;">DOC: </b></div>
+                                <div class="col-6 line">{{match.matchTeams.home.doc}}</div>
+                                <div class="col-6 line"><b style="color: #3B82F6;">SID: </b></div>
+                                <div class="col-6 line">{{match.matchTeams.home.sid}}</div>
+                                <div class="col-6 line"><b style="color: #3B82F6;">UID: </b></div>
+                                <div class="col-6 line">{{match.matchTeams.home.uid}}</div>
+                                <div class="col-6 line"><b style="color: #3B82F6;">VIRTUAL: </b></div>
+                                <div class="col-6 line">{{match.matchTeams.home.virtual}}</div>
+                                <div class="col-6 line"><b style="color: #3B82F6;">NAME: </b></div>
+                                <div class="col-6 line">{{match.matchTeams.home.name}}</div>
+                                <div class="col-6 line"><b style="color: #3B82F6;">MEDIUMNAME: </b></div>
+                                <div class="col-6 line">{{match.matchTeams.home.mediumname}}</div>
+                                <div class="col-6 line"><b style="color: #3B82F6;">ABBR: </b></div>
+                                <div class="col-6 line">{{match.matchTeams.home.abbr}}</div>
+                                <div class="col-6 line"><b style="color: #3B82F6;">NICKNAME: </b></div>
+                                <div class="col-6 line">{{match.matchTeams.home.nickname}}</div>
+                                <div class="col-6 line"><b style="color: #3B82F6;">ISCOUNTRY: </b></div>
+                                <div class="col-6 line">{{match.matchTeams.home.isCountry}}</div>
+                                <div class="col-6 line"><b style="color: #3B82F6;">HASLOGO: </b></div>
+                                <div class="col-6 line">{{match.matchTeams.home.haslogo}}</div>
+                            </div>
+                            <div class="col-4 grid">
+                                <div class="col-6 line"><b style="color: #3B82F6;">ID: </b></div>
+                                <div class="col-6 line">{{match.matchTeams.away._id}}</div>
+                                <div class="col-6 line"><b style="color: #3B82F6;">DOC: </b></div>
+                                <div class="col-6 line">{{match.matchTeams.away.doc}}</div>
+                                <div class="col-6 line"><b style="color: #3B82F6;">SID: </b></div>
+                                <div class="col-6 line">{{match.matchTeams.away.sid}}</div>
+                                <div class="col-6 line"><b style="color: #3B82F6;">UID: </b></div>
+                                <div class="col-6 line">{{match.matchTeams.away.uid}}</div>
+                                <div class="col-6 line"><b style="color: #3B82F6;">VIRTUAL: </b></div>
+                                <div class="col-6 line">{{match.matchTeams.away.virtual}}</div>
+                                <div class="col-6 line"><b style="color: #3B82F6;">NAME: </b></div>
+                                <div class="col-6 line">{{match.matchTeams.away.name}}</div>
+                                <div class="col-6 line"><b style="color: #3B82F6;">MEDIUMNAME: </b></div>
+                                <div class="col-6 line">{{match.matchTeams.away.mediumname}}</div>
+                                <div class="col-6 line"><b style="color: #3B82F6;">ABBR: </b></div>
+                                <div class="col-6 line">{{match.matchTeams.away.abbr}}</div>
+                                <div class="col-6 line"><b style="color: #3B82F6;">NICKNAME: </b></div>
+                                <div class="col-6 line">{{match.matchTeams.away.nickname}}</div>
+                                <div class="col-6 line"><b style="color: #3B82F6;">ISCOUNTRY: </b></div>
+                                <div class="col-6 line">{{match.matchTeams.away.isCountry}}</div>
+                                <div class="col-6 line"><b style="color: #3B82F6;">HASLOGO: </b></div>
+                                <div class="col-6 line">{{match.matchTeams.away.haslogo}}</div>
+                            </div>
+                            <div class="col-4 grid">
+                                <div class="col-6 line"><b style="color: #3B82F6;">HOME: </b></div>
+                                <div class="col-6 line">{{match.result.home}}</div>
+                                <div class="col-6 line"><b style="color: #3B82F6;">AWAY: </b></div>
+                                <div class="col-6 line">{{match.result.away}}</div>
+                                <div class="col-6 line"><b style="color: #3B82F6;">PERIOD: </b></div>
+                                <div class="col-6 line">{{match.result.period}}</div>
+                                <div class="col-6 line"><b style="color: #3B82F6;">WINNER: </b></div>
+                                <div class="col-6 line">{{match.result.winner}}</div>   
+                                <div class="col-6 line"><b style="color: #3B82F6;">-</b></div>
+                                <div class="col-6 line"><b style="color: #3B82F6;">-</b></div>  
+                                <div class="col-6 line"><b style="color: #3B82F6;">-</b></div>  
+                                <div class="col-6 line"><b style="color: #3B82F6;">-</b></div>  
+                                <div class="col-6 line"><b style="color: #3B82F6;">-</b></div>
+                                <div class="col-6 line"><b style="color: #3B82F6;">-</b></div>  
+                                <div class="col-6 line"><b style="color: #3B82F6;">-</b></div>  
+                                <div class="col-6 line"><b style="color: #3B82F6;">-</b></div>  
+                                <div class="col-6 line"><b style="color: #3B82F6;">-</b></div>  
+                                <div class="col-6 line"><b style="color: #3B82F6;">-</b></div>  
+                                <div class="col-6 line"><b style="color: #3B82F6;">-</b></div>  
+                                <div class="col-6 line"><b style="color: #3B82F6;">-</b></div>  
+                                <div class="col-6 line"><b style="color: #3B82F6;">-</b></div>  
+                                <div class="col-6 line"><b style="color: #3B82F6;">-</b></div>       
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
 </div>
-

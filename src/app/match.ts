@@ -4,6 +4,7 @@ export interface Match {
   time?: string
   date?: string
   result?: Result
+  showMatchTeams?: boolean
 }
 
 export interface Result {

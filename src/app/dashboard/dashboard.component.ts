@@ -29,14 +29,9 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  public showDialog() {
-    this.display = true;
-    this.newMatch = this.matches[0]
-  }
-
   public addNewMatch() {
+    this.newMatch = JSON.parse(JSON.stringify(this.matches[0]))
     this.matches.unshift(this.newMatch)
-    this.display = false;
   }
 
   public deleteAll() {
@@ -60,7 +55,6 @@ export class DashboardComponent implements OnInit {
   matches: Match[] = []
   totalMatches: number = 0
   selectedRows: Match[] = []
-  display: boolean = false
   newMatch: Match = {}
 
   ngOnInit(): void {

@@ -2,8 +2,8 @@
 <div class="col-12" style="padding: 1em;">
     <p-toolbar styleClass="p-mb-4">
         <div class="col-12" style="text-align: right;">
-            <p-button label="New" style="margin-right: 1em;" icon="pi pi-plus" (click)="addNewMatch()"></p-button>
-            <button pButton type="button" label="Delete all Matches selected" (click)="deleteAll()"></button>
+            <p-button style="margin-top: 1em;" label="New" i18n-label style="margin-right: 1em;" icon="pi pi-plus" (click)="addNewMatch()"></p-button>
+            <button style="margin-top: 1em;" pButton type="button" label="Delete all Matches selected"  i18n-label (click)="deleteAll()"></button>
         </div>
     </p-toolbar>
 </div>
@@ -12,13 +12,13 @@
         <ng-template pTemplate="header" styleClass="p-datatable-sm">
             <tr>
                 <th style="width: 3rem"></th>
-                <th pSortableColumn="id">ID <p-sortIcon field="id"></p-sortIcon>
+                <th pSortableColumn="id"  i18n>ID <p-sortIcon field="id"></p-sortIcon>
                 </th>
-                <th pSortableColumn="Time">Time <p-sortIcon field="time"></p-sortIcon>
+                <th pSortableColumn="Time" i18n>Time <p-sortIcon field="time"></p-sortIcon>
                 </th>
-                <th pSortableColumn="date">date <p-sortIcon field="date"></p-sortIcon>
+                <th pSortableColumn="date" i18n>date <p-sortIcon field="date"></p-sortIcon>
                 </th>
-                <th pSortableColumn="Action">Action <p-sortIcon field="Action"></p-sortIcon>
+                <th pSortableColumn="Action" i18n>Action <p-sortIcon field="Action"></p-sortIcon>
                 </th>
                 <th>
                     <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
@@ -36,7 +36,7 @@
                 <td>{{match.time}}</td>
                 <td>{{match.date}}</td>
                 <td>
-                    <button pButton pRipple type="button" label="Delete" class="p-button-raised p-button-danger"
+                    <button pButton pRipple type="button" label="Delete" i18n-label class="p-button-raised p-button-danger"
                         (click)="delete(match)" icon="pi pi-trash">
                     </button>
                 </td>
@@ -50,18 +50,18 @@
                 <td colspan="7">
                     <div class="p-p-3">
                         <div class="col-12 grid" style="background-color: #3B82F6;">
-                            <div class="col-4" style="text-align: center;">
-                                <b style="color: white;">MATCH TEAMS HOME</b>
+                            <div class="col-12 md:col-12 lg:col-4" style="text-align: center;">
+                                <b style="color: white;" i18n>MATCH TEAMS HOME</b>
                             </div>
-                            <div class="col-4" style="text-align: center;">
-                                <b style="color: white;">MATCH TEAMS AWAY</b>
+                            <div class="col-12 md:col-12 lg:col-4" style="text-align: center;">
+                                <b style="color: white;" i18n>MATCH TEAMS AWAY</b>
                             </div>
-                            <div class="col-4" style="text-align: center;">
-                                <b style="color: white;">RESULT</b>
+                            <div class="col-12 md:col-12 lg:col-4" style="text-align: center;">
+                                <b style="color: white;" i18n>RESULT</b>
                             </div>
                         </div>
                         <div class="col-12 grid">
-                            <div class="col-4 grid">
+                            <div class="col-12 md:col-12 lg:col-4 grid">
                                 <div class="col-6 line"><b style="color: #3B82F6;">ID: </b></div>
                                 <div class="col-6 line">{{match.matchTeams.home._id}}</div>
                                 <div class="col-6 line"><b style="color: #3B82F6;">DOC: </b></div>
@@ -85,7 +85,7 @@
                                 <div class="col-6 line"><b style="color: #3B82F6;">HASLOGO: </b></div>
                                 <div class="col-6 line">{{match.matchTeams.home.haslogo}}</div>
                             </div>
-                            <div class="col-4 grid">
+                            <div class="col-12 md:col-12 lg:col-4 grid">
                                 <div class="col-6 line"><b style="color: #3B82F6;">ID: </b></div>
                                 <div class="col-6 line">{{match.matchTeams.away._id}}</div>
                                 <div class="col-6 line"><b style="color: #3B82F6;">DOC: </b></div>
@@ -109,14 +109,14 @@
                                 <div class="col-6 line"><b style="color: #3B82F6;">HASLOGO: </b></div>
                                 <div class="col-6 line">{{match.matchTeams.away.haslogo}}</div>
                             </div>
-                            <div class="col-4 grid">
-                                <div class="col-6 line"><b style="color: #3B82F6;">HOME: </b></div>
+                            <div class="col-12 md:col-12 lg:col-4 grid">
+                                <div class="col-6 line"><b style="color: #3B82F6;" i18n>HOME: </b></div>
                                 <div class="col-6 line">{{match.result.home}}</div>
-                                <div class="col-6 line"><b style="color: #3B82F6;">AWAY: </b></div>
+                                <div class="col-6 line"><b style="color: #3B82F6;" i18n>AWAY: </b></div>
                                 <div class="col-6 line">{{match.result.away}}</div>
-                                <div class="col-6 line"><b style="color: #3B82F6;">PERIOD: </b></div>
+                                <div class="col-6 line"><b style="color: #3B82F6;" i18n>PERIOD: </b></div>
                                 <div class="col-6 line">{{match.result.period}}</div>
-                                <div class="col-6 line"><b style="color: #3B82F6;">WINNER: </b></div>
+                                <div class="col-6 line"><b style="color: #3B82F6;" i18n>WINNER: </b></div>
                                 <div class="col-6 line">{{match.result.winner}}</div>   
                                 <div class="col-6 line"><b style="color: #3B82F6;">-</b></div>
                                 <div class="col-6 line"><b style="color: #3B82F6;">-</b></div>  
